@@ -1,4 +1,4 @@
-function mergeSort(arr: number[]): number[] {
+export function mergeSort(arr: number[]): number[] {
   const n = arr.length;
   if (n <= 1) {
     return arr;
@@ -38,7 +38,3 @@ function merge(left: number[], right: number[]): number[] {
 
   return mergedArr;
 }
-
-const arr = [38, 27, 43, 3, 9, 82, 10];
-const sortedArr = mergeSort(arr);
-console.log(sortedArr);
