@@ -12,7 +12,7 @@ function partition<T>(arr: T[], left: number, right: number, pivotIndex: number)
   return storeIndex;
 }
 
-function quickSort<T>(arr: T[]): T[] {
+export function quickSort<T>(arr: T[]): T[] {
   if (arr.length <= 1) return arr;
   const ninther = Math.floor(arr.length / 9);
   const left = partition(

@@ -1,0 +1,25 @@
+{
+  "name": "pdqsort_typescript",
+  "version": "0.0.1",
+  "description": "runner for pattern defeating quicksort implementation",
+  "main": "index.ts",
+  "engines": {
+    "node": "19.7.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "keywords": [
+    "chat-gpt",
+    "TypeScript",
+    "Node.js"
+  ],
+  "author": "Felipe Libório",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^18.14.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.9.5"
+  }
+}

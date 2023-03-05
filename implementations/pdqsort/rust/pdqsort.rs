@@ -1,3 +1,5 @@
+use std::cmp::Ordering;
+
 fn pdqsort<T: Ord>(arr: &mut [T]) {
   if arr.len() <= 1 {
       return;
@@ -95,4 +97,10 @@ fn median_of_three<T: Ord>(arr: &[T]) -> &T {
 fn median<T: Ord>(arr: &[T]) -> &T {
   let n = arr.len();
   &arr[n / 2]
+}
+
+fn main() {
+    let mut arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    pdqsort(&mut arr);
+    println!("{:?}", arr);
 }
