@@ -1,3 +1,6 @@
+use std::env;
+use std::io::{self, Write};
+
 fn merge_sort(arr: &mut [i32]) {
   let len = arr.len();
   if len <= 1 {
@@ -22,7 +25,15 @@ fn merge_sort(arr: &mut [i32]) {
 }
 
 fn main() {
-  let mut arr = [38, 27, 43, 3, 9, 82, 10];
-  merge_sort(&mut arr);
-  println!("{:?}", arr);
+    let mut input: Vec<i32> = env::args()
+    .skip(1)
+    .map(|x| x.parse().expect("Not a number!"))
+    .collect();
+
+    merge_sort(&mut input);
+
+    let output: String = input.iter().map( |&entry| entry.to_string() + " ").collect();
+    print!("sorted {}", output);
+
+    io::stdout().flush().unwrap();
 }

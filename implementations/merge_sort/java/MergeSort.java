@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class MergeSort {
 
     public static void merge(int[] arr, int start, int mid, int end) {
@@ -45,8 +43,19 @@ public class MergeSort {
     }
 
     public static void main(String[] args) {
-        int[] arr = {38, 27, 43, 3, 9, 82, 10};
-        mergeSort(arr);
-        System.out.println(Arrays.toString(arr));
+        int[] input = new int[args.length];
+        
+        for (int i = 0; i < args.length; ++i) {
+            input[i] = Integer.parseInt(args[i]);
+        }
+
+        mergeSort(input);
+
+        String output = ""+input[0];
+        for (int i = 1; i < input.length; ++i) {
+            output += " "+input[i];
+        }
+
+        System.out.println(output);
     }
 }
