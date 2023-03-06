@@ -1,7 +1,4 @@
-use std::env;
-use std::io::{self, Write};
-
-fn insertion_sort<T: PartialOrd + Copy>(arr: &mut [T], left: usize, right: usize) {
+fn insertion_sort<T: PartialOrd>(arr: &mut [T], left: usize, right: usize) {
   for i in (left + 1)..=right {
       let key_item = arr[i];
       let mut j = i;
@@ -67,15 +64,7 @@ fn timsort<T: PartialOrd + Copy>(arr: &mut [T]) {
 }
 
 fn main() {
-    let mut input: Vec<i32> = env::args()
-    .skip(1)
-    .map(|x| x.parse().expect("Not a number!"))
-    .collect();
-    
-    timsort(&mut input);
-    
-    let output: String = input.iter().map( |&entry| entry.to_string() + " ").collect();
-    print!("sorted {}", output);
-    
-    io::stdout().flush().unwrap();
+  let mut arr = vec![38, 27, 43, 3, 9, 82, 10];
+  timsort(&mut arr);
+  println!("{:?}", arr);
 }

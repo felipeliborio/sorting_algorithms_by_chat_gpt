@@ -2,6 +2,23 @@ import java.util.Arrays;
 
 public class Timsort {
 
+    public static void main(String[] args) {
+        int[] input = new int[args.length];
+        
+        for (int i = 0; i < args.length; ++i) {
+            input[i] = Integer.parseInt(args[i]);
+        }
+
+        sort(input);
+
+        String output = "sorted "+input[0];
+        for (int i = 1; i < input.length; ++i) {
+            output += " "+input[i];
+        }
+
+        System.out.print(output);
+    }
+
     private static final int MIN_MERGE = 32;
     private static final int MIN_GALLOP = 7;
 

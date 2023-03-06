@@ -62,3 +62,7 @@ function timsort<T>(array: T[], compare: (a: T, b: T) => number) {
     }
   }
 }
+
+const arr = process.argv.slice(2).map((item) => parseInt(item))
+timsort(arr, (a, b) => a - b)
+process.stdout.write("sorted "+arr.join(" "))
