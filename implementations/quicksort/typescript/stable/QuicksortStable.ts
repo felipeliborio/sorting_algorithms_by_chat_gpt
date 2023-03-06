@@ -28,3 +28,7 @@ function merge<T extends Comparable<T>>(left: T[], pivot: T, right: T[]): T[] {
   quicksortStableHelper(result, left.length + 1, result.length - 1);
   return result;
 }
+
+const arr = process.argv.slice(2).map((item) => parseInt(item))
+const sortedArr = quicksortStable(arr)
+process.stdout.write("sorted "+sortedArr.join(" "))

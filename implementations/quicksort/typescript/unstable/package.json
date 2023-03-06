@@ -2,13 +2,13 @@
   "name": "unstable_quiccksort_typescript",
   "version": "0.0.1",
   "description": "runner for the unstable quicksort implementation",
-  "main": "index.ts",
+  "main": "QuicksortUnstable.ts",
   "engines": {
     "node": "19.7.0"
   },
   "scripts": {
     "build": "tsc",
-    "start": "node dist/index.js"
+    "start": "node dist/QuicksortUnstable.js"
   },
   "keywords": [
     "chat-gpt",

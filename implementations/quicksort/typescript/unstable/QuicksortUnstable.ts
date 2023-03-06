@@ -24,3 +24,8 @@ function partitionUnstable<T extends Comparable<T>>(arr: T[], left: number, righ
   [arr[i], arr[right]] = [arr[right], arr[i]];
   return i;
 }
+
+
+const arr = process.argv.slice(2).map((item) => parseInt(item))
+quicksortUnstable(arr)
+process.stdout.write("sorted "+arr.join(" "))
