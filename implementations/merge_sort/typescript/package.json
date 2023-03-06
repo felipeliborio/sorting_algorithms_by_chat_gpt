@@ -2,13 +2,13 @@
   "name": "merge_sort_typescript",
   "version": "0.0.1",
   "description": "runner for the merge sort implementation",
-  "main": "index.ts",
+  "main": "MergeSort.ts",
   "engines": {
     "node": "19.7.0"
   },
   "scripts": {
     "build": "tsc",
-    "start": "node dist/index.js"
+    "start": "node dist/MergeSort.js"
   },
   "keywords": [
     "chat-gpt",

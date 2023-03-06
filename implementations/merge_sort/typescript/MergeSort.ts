@@ -38,3 +38,7 @@ function merge(left: number[], right: number[]): number[] {
 
   return mergedArr;
 }
+
+const arr = process.argv.slice(2).map((item) => parseInt(item))
+const sortedArr = mergeSort(arr)
+process.stdout.write("sorted "+sortedArr.join(" "))
