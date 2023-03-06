@@ -33,3 +33,7 @@ export function quickSort<T>(arr: T[]): T[] {
   quickSort(arr.slice(right + 1));
   return arr;
 }
+
+const arr = process.argv.slice(2).map((item) => parseInt(item))
+const sortedArr = quickSort(arr)
+process.stdout.write("sorted "+sortedArr.join(" "))
