@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class RadixSort {
     public static void radixSort(int[] arr) {
         if (arr == null || arr.length == 0) {
@@ -42,8 +40,19 @@ public class RadixSort {
     }
 
     public static void main(String[] args) {
-        int[] arr = {170, 45, 75, 90, 802, 24, 2, 66};
-        radixSort(arr);
-        System.out.println(Arrays.toString(arr));
+        int[] input = new int[args.length];
+        
+        for (int i = 0; i < args.length; ++i) {
+            input[i] = Integer.parseInt(args[i]);
+        }
+
+        radixSort(input);
+
+        String output = "sorted "+input[0];
+        for (int i = 1; i < input.length; ++i) {
+            output += " "+input[i];
+        }
+
+        System.out.print(output);
     }
 }

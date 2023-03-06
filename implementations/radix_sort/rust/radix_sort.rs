@@ -1,3 +1,6 @@
+use std::env;
+use std::io::{self, Write};
+ 
 fn radix_sort(arr: &mut [i32]) {
   if arr.len() <= 1 {
       return;
@@ -39,4 +42,18 @@ fn counting_sort(arr: &mut [i32], radix: i32) {
   for i in 0..arr.len() {
       arr[i] = output[i];
   }
+}
+
+fn main() {
+  let mut input: Vec<i32> = env::args()
+  .skip(1)
+  .map(|x| x.parse().expect("Not a number!"))
+  .collect();
+
+  radix_sort(&mut input);
+
+  let output: String = input.iter().map( |&entry| entry.to_string() + " ").collect();
+  print!("sorted {}", output);
+
+  io::stdout().flush().unwrap();
 }

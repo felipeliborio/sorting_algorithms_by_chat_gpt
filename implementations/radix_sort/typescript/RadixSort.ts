@@ -35,6 +35,6 @@ function countingSort(arr: number[], exp: number) {
   }
 }
 
-const arr = [170, 45, 75, 90, 802, 24, 2, 66];
+const arr = process.argv.slice(2).map((item) => parseInt(item))
 radixSort(arr);
-console.log(arr);
+process.stdout.write("sorted "+arr.join(" "))
