@@ -1,3 +1,6 @@
+use std::env;
+use std::io::{self, Write};
+
 // Unstable Quicksort
 fn quicksort_unstable<T: Ord>(arr: &mut [T]) {
   if arr.len() <= 1 {
@@ -19,4 +22,18 @@ fn partition_unstable<T: Ord>(arr: &mut [T]) -> usize {
   }
   arr.swap(i, pivot_index);
   i
+}
+
+fn main() {
+  let mut input: Vec<i32> = env::args()
+  .skip(1)
+  .map(|x| x.parse().expect("Not a number!"))
+  .collect();
+
+  quicksort_unstable(&mut input);
+
+  let output: String = input.iter().map( |&entry| entry.to_string() + " ").collect();
+  print!("sorted {}", output);
+
+  io::stdout().flush().unwrap();
 }

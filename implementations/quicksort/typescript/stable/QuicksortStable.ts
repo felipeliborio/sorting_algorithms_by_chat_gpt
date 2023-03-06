@@ -1,5 +1,5 @@
 // Stable Quicksort
-function quicksortStable<T extends Comparable<T>>(arr: T[]): T[] {
+export function quicksortStable<T extends Comparable<T>>(arr: T[]): T[] {
   if (arr.length <= 1) {
     return arr;
   }

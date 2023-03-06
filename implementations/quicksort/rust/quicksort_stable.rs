@@ -1,3 +1,6 @@
+use std::env;
+use std::io::{self, Write};
+
 // Stable Quicksort
 fn quicksort_stable<T: Ord + Clone>(arr: &[T]) -> Vec<T> {
   if arr.len() <= 1 {
@@ -20,4 +23,18 @@ fn partition_stable<T: Ord + Clone>(arr: &[T]) -> usize {
       }
   }
   i
+}
+
+fn main() {
+  let mut input: Vec<i32> = env::args()
+  .skip(1)
+  .map(|x| x.parse().expect("Not a number!"))
+  .collect();
+
+  let sorted = quicksort_stable(&mut input);
+
+  let output: String = sorted.iter().map( |&entry| entry.to_string() + " ").collect();
+  print!("sorted {}", output);
+
+  io::stdout().flush().unwrap();
 }

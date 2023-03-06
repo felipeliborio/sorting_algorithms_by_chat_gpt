@@ -1,5 +1,5 @@
 // Unstable Quicksort
-function quicksortUnstable<T extends Comparable<T>>(arr: T[]): void {
+export function quicksortUnstable<T extends Comparable<T>>(arr: T[]): void {
   quicksortUnstableHelper(arr, 0, arr.length - 1);
 }
 

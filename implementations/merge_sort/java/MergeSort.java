@@ -51,11 +51,11 @@ public class MergeSort {
 
         mergeSort(input);
 
-        String output = ""+input[0];
+        String output = "sorted "+input[0];
         for (int i = 1; i < input.length; ++i) {
             output += " "+input[i];
         }
 
-        System.out.println(output);
+        System.out.print(output);
     }
 }
