@@ -39,6 +39,14 @@ function merge(left: number[], right: number[]): number[] {
   return mergedArr;
 }
 
-const arr = process.argv.slice(2).map((item) => parseInt(item))
+import fs from "fs"
+
+const input = fs.readFileSync(process.argv[2], "utf8")
+const arr = input.split(" ").map((item) => parseInt(item))
+
+let init = Date.now()
 const sortedArr = mergeSort(arr)
-process.stdout.write("sorted "+sortedArr.join(" "))
+let end = Date.now()
+process.stdout.write("typescript elapsed seconds "+(end-init)/1000+"\n")
+
+fs.writeFileSync(process.argv[2]+".merge_sort.out.typescript.txt", sortedArr.join(" "))
