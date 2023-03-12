@@ -1,4 +1,4 @@
-if ! [[ -f ./merge_sort.app ]]
+if ! [[ -f ./merge_sort.app ]] || test $2 = "-c"
 then
     rustc ./merge_sort.rs -o ./merge_sort.app -C opt-level=2
 fi
@@ -8,4 +8,4 @@ then
     rm $1.merge_sort.out.rust.txt
 fi
 
-time ./merge_sort.app $1 > $1.merge_sort.time.txt
+time ./merge_sort.app $1 >> $1.merge_sort.time.txt
