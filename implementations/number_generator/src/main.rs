@@ -11,7 +11,7 @@ fn main() {
     let integers = generate_integers(input[0]);
 
     let output: String = integers.iter().map( |&entry| entry.to_string() + " ").collect();
-    print!("{}", output);
+    print!("{}", output.trim());
 
     io::stdout().flush().unwrap();
 }
