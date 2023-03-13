@@ -1,7 +1,10 @@
-public class MergeSort {
+import java.io.File;
+import java.util.Arrays;
+import java.util.Scanner;
 
-    public static void merge(int[] arr, int start, int mid, int end) {
-        int[] temp = new int[end - start + 1];
+public class MergeSort {
+    public static void merge(long[] arr, int start, int mid, int end) {
+        long[] temp = new long[end - start + 1];
         int i = start, j = mid + 1, k = 0;
 
         while (i <= mid && j <= end) {
@@ -25,7 +28,7 @@ public class MergeSort {
         }
     }
 
-    public static void mergeSortHelper(int[] arr, int start, int end) {
+    public static void mergeSortHelper(long[] arr, int start, int end) {
         if (start < end) {
             int mid = start + (end - start) / 2;
             mergeSortHelper(arr, start, mid);
@@ -34,7 +37,7 @@ public class MergeSort {
         }
     }
 
-    public static void mergeSort(int[] arr) {
+    public static void mergeSort(long[] arr) {
         int n = arr.length;
         if (n <= 1) {
             return;
@@ -42,20 +45,35 @@ public class MergeSort {
         mergeSortHelper(arr, 0, n - 1);
     }
 
-    public static void main(String[] args) {
-        int[] input = new int[args.length];
+    public static void main(String[] args) throws Exception {
+        String filePath = args[0];
+
+        File file = new File(filePath);
+
+        Scanner sc = new Scanner(file);
+        var inputStr = sc.nextLine().split(" ");
+        sc.close();
         
-        for (int i = 0; i < args.length; ++i) {
-            input[i] = Integer.parseInt(args[i]);
+        var input = new long[inputStr.length];
+        for (int i = 0; i < inputStr.length; ++i) {
+            input[i] = Long.parseLong(inputStr[i]);
         }
-
+        
+        var now = System.currentTimeMillis();
         mergeSort(input);
+        var elapsed = System.currentTimeMillis() - now;
 
-        String output = "sorted "+input[0];
-        for (int i = 1; i < input.length; ++i) {
-            output += " "+input[i];
-        }
+        String output = Arrays.toString(input)
+            .replace(",", "");
+        
+        output = output.substring(1, output.length() - 1);
+        
+        File outputFile = new File(filePath+".merge_sort.out.java.txt");
+        outputFile.createNewFile();
+        var outputWriter = new java.io.PrintWriter(outputFile);
+        outputWriter.print(output);
+        outputWriter.close();
 
-        System.out.print(output);
+        System.out.println("java elapsed seconds "+elapsed/1000.0);
     }
 }
