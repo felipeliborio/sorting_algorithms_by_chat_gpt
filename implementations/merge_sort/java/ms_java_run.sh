@@ -1,4 +1,4 @@
-if ! [[ -f ./merge_sort.app ]] || test $2 = "-c"
+if ! [[ -f ./MergeSort.class ]] || test $2 = "-c"
 then
     javac ./MergeSort.java --release 19
 fi
