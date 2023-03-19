@@ -35,6 +35,14 @@ function countingSort(arr: number[], exp: number) {
   }
 }
 
-const arr = process.argv.slice(2).map((item) => parseInt(item))
-radixSort(arr);
-process.stdout.write("sorted "+arr.join(" "))
+import fs from "fs"
+
+const input = fs.readFileSync(process.argv[2], "utf8")
+const arr = input.split(" ").map((item) => parseInt(item))
+
+let init = Date.now()
+const sortedArr = radixSort(arr)
+let end = Date.now()
+process.stdout.write("typescript elapsed seconds "+(end-init)/1000+"\n")
+
+fs.writeFileSync(process.argv[2]+".radix_sort.out.typescript.txt", sortedArr.join(" "))
