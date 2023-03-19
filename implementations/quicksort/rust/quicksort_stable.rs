@@ -1,4 +1,6 @@
 use std::env;
+use std::fs;
+use std::time::Instant;
 use std::io::{self, Write};
 
 // Stable Quicksort
@@ -26,15 +28,24 @@ fn partition_stable<T: Ord + Clone>(arr: &[T]) -> usize {
 }
 
 fn main() {
-  let mut input: Vec<i32> = env::args()
-  .skip(1)
-  .map(|x| x.parse().expect("Not a number!"))
-  .collect();
+  let file_path = env::args().nth(1).unwrap();
+  let contents = fs::read_to_string(&file_path)
+      .expect("Error reading the file");
 
-  let sorted = quicksort_stable(&mut input);
+  let mut input: Vec<i64> = contents
+      .split(" ")
+      .map(|x| x.parse().expect("Not a number!"))
+      .collect();
 
-  let output: String = sorted.iter().map( |&entry| entry.to_string() + " ").collect();
-  print!("sorted {}", output);
+  let now = Instant::now();
+  input = quicksort_stable(&mut input);
+  let elapsed = now.elapsed();
+  
+  let output: String = input.iter().map( |&entry| entry.to_string() + " ").collect();
+  
+  fs::write(file_path+".merge_sort.out.rust.txt", output.trim())
+      .expect("Unable to write file");
 
+  println!("rust elapsed seconds {}", elapsed.as_secs() as f64 + elapsed.subsec_nanos() as f64 * 1e-9);
   io::stdout().flush().unwrap();
 }
