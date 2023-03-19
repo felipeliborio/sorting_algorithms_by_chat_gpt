@@ -1,18 +1,23 @@
+import java.io.File;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Scanner;
+
 public class RadixSort {
-    public static void radixSort(int[] arr) {
-        if (arr == null || arr.length == 0) {
+    public static void radixSort(int[] input) {
+        if (input == null || input.length == 0) {
             return;
         }
 
-        int max = arr[0];
-        for (int i = 1; i < arr.length; i++) {
-            if (arr[i] > max) {
-                max = arr[i];
+        int max = input[0];
+        for (int i = 1; i < input.length; i++) {
+            if (input[i] > max) {
+                max = input[i];
             }
         }
 
         for (int exp = 1; max / exp > 0; exp *= 10) {
-            countingSort(arr, exp);
+            countingSort(input, exp);
         }
     }
 
@@ -39,20 +44,35 @@ public class RadixSort {
         }
     }
 
-    public static void main(String[] args) {
-        int[] input = new int[args.length];
+    public static void main(String[] args) throws IOException {
+        String filePath = args[0];
+
+        File file = new File(filePath);
+
+        Scanner sc = new Scanner(file);
+        var inputStr = sc.nextLine().split(" ");
+        sc.close();
         
-        for (int i = 0; i < args.length; ++i) {
-            input[i] = Integer.parseInt(args[i]);
+        var input = new int[inputStr.length];
+        for (int i = 0; i < inputStr.length; ++i) {
+            input[i] = Integer.parseInt(inputStr[i]);
         }
-
+        
+        var now = System.currentTimeMillis();
         radixSort(input);
+        var elapsed = System.currentTimeMillis() - now;
 
-        String output = "sorted "+input[0];
-        for (int i = 1; i < input.length; ++i) {
-            output += " "+input[i];
-        }
+        String output = Arrays.toString(input)
+            .replace(",", "");
+        
+        output = output.substring(1, output.length() - 1);
+        
+        File outputFile = new File(filePath+".radix_sort.out.java.txt");
+        outputFile.createNewFile();
+        var outputWriter = new java.io.PrintWriter(outputFile);
+        outputWriter.print(output);
+        outputWriter.close();
 
-        System.out.print(output);
+        System.out.println("java elapsed seconds "+elapsed/1000.0);
     }
 }
