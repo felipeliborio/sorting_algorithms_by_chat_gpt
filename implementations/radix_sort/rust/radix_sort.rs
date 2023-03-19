@@ -1,7 +1,9 @@
 use std::env;
+use std::fs;
+use std::time::Instant;
 use std::io::{self, Write};
- 
-fn radix_sort(arr: &mut [i32]) {
+
+fn radix_sort(arr: &mut [i64]) {
   if arr.len() <= 1 {
       return;
   }
@@ -21,7 +23,7 @@ fn radix_sort(arr: &mut [i32]) {
   }
 }
 
-fn counting_sort(arr: &mut [i32], radix: i32) {
+fn counting_sort(arr: &mut [i64], radix: i64) {
   let mut output = vec![0; arr.len()];
   let mut count = vec![0; 10];
 
@@ -45,15 +47,24 @@ fn counting_sort(arr: &mut [i32], radix: i32) {
 }
 
 fn main() {
-  let mut input: Vec<i32> = env::args()
-  .skip(1)
-  .map(|x| x.parse().expect("Not a number!"))
-  .collect();
+    let file_path = env::args().nth(1).unwrap();
+    let contents = fs::read_to_string(&file_path)
+        .expect("Error reading the file");
 
-  radix_sort(&mut input);
+    let mut input: Vec<i64> = contents
+        .split(" ")
+        .map(|x| x.parse().expect("Not a number!"))
+        .collect();
 
-  let output: String = input.iter().map( |&entry| entry.to_string() + " ").collect();
-  print!("sorted {}", output);
+    let now = Instant::now();
+    radix_sort(&mut input);
+    let elapsed = now.elapsed();
+    
+    let output: String = input.iter().map( |&entry| entry.to_string() + " ").collect();
+    
+    fs::write(file_path+".merge_sort.out.rust.txt", output.trim())
+        .expect("Unable to write file");
 
-  io::stdout().flush().unwrap();
+    println!("rust elapsed seconds {}", elapsed.as_secs() as f64 + elapsed.subsec_nanos() as f64 * 1e-9);
+    io::stdout().flush().unwrap();
 }
