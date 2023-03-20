@@ -63,6 +63,14 @@ function timsort<T>(array: T[], compare: (a: T, b: T) => number) {
   }
 }
 
-const arr = process.argv.slice(2).map((item) => parseInt(item))
-timsort(arr, (a, b) => a - b)
-process.stdout.write("sorted "+arr.join(" "))
+import fs from "fs"
+
+const input = fs.readFileSync(process.argv[2], "utf8")
+const arr = input.split(" ").map((item) => parseInt(item))
+
+let init = Date.now()
+timsort(arr, (a, b) => a-b)
+let end = Date.now()
+process.stdout.write("typescript elapsed seconds "+(end-init)/1000+"\n")
+
+fs.writeFileSync(process.argv[2]+".timsort.out.typescript.txt", arr.join(" "))
