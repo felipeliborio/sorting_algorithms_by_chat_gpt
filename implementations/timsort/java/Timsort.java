@@ -1,22 +1,40 @@
+import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Timsort {
 
-    public static void main(String[] args) {
-        int[] input = new int[args.length];
+    public static void main(String[] args) throws IOException {
+        String filePath = args[0];
+
+        File file = new File(filePath);
+
+        Scanner sc = new Scanner(file);
+        var inputStr = sc.nextLine().split(" ");
+        sc.close();
         
-        for (int i = 0; i < args.length; ++i) {
-            input[i] = Integer.parseInt(args[i]);
+        var input = new int[inputStr.length];
+        for (int i = 0; i < inputStr.length; ++i) {
+            input[i] = Integer.parseInt(inputStr[i]);
         }
-
+        
+        var now = System.currentTimeMillis();
         sort(input);
+        var elapsed = System.currentTimeMillis() - now;
 
-        String output = "sorted "+input[0];
-        for (int i = 1; i < input.length; ++i) {
-            output += " "+input[i];
-        }
+        String output = Arrays.toString(input)
+            .replace(",", "");
+        
+        output = output.substring(1, output.length() - 1);
+        
+        File outputFile = new File(filePath+".timsort.out.java.txt");
+        outputFile.createNewFile();
+        var outputWriter = new java.io.PrintWriter(outputFile);
+        outputWriter.print(output);
+        outputWriter.close();
 
-        System.out.print(output);
+        System.out.println("java elapsed seconds "+elapsed/1000.0);
     }
 
     private static final int MIN_MERGE = 32;
