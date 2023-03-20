@@ -12,9 +12,9 @@ public class QuickSortUnstable {
         var inputStr = sc.nextLine().split(" ");
         sc.close();
         
-        var input = new Long[inputStr.length];
+        var input = new Integer[inputStr.length];
         for (int i = 0; i < inputStr.length; ++i) {
-            input[i] = Long.parseLong(inputStr[i]);
+            input[i] = Integer.parseInt(inputStr[i]);
         }
         
         var now = System.currentTimeMillis();

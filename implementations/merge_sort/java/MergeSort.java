@@ -3,8 +3,8 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class MergeSort {
-    public static void merge(long[] arr, int start, int mid, int end) {
-        long[] temp = new long[end - start + 1];
+    public static void merge(int[] arr, int start, int mid, int end) {
+        int[] temp = new int[end - start + 1];
         int i = start, j = mid + 1, k = 0;
 
         while (i <= mid && j <= end) {
@@ -28,7 +28,7 @@ public class MergeSort {
         }
     }
 
-    public static void mergeSortHelper(long[] arr, int start, int end) {
+    public static void mergeSortHelper(int[] arr, int start, int end) {
         if (start < end) {
             int mid = start + (end - start) / 2;
             mergeSortHelper(arr, start, mid);
@@ -37,7 +37,7 @@ public class MergeSort {
         }
     }
 
-    public static void mergeSort(long[] arr) {
+    public static void mergeSort(int[] arr) {
         int n = arr.length;
         if (n <= 1) {
             return;
@@ -54,9 +54,9 @@ public class MergeSort {
         var inputStr = sc.nextLine().split(" ");
         sc.close();
         
-        var input = new long[inputStr.length];
+        var input = new int[inputStr.length];
         for (int i = 0; i < inputStr.length; ++i) {
-            input[i] = Long.parseLong(inputStr[i]);
+            input[i] = Integer.parseInt(inputStr[i]);
         }
         
         var now = System.currentTimeMillis();

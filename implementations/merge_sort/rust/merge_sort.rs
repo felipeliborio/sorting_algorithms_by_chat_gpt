@@ -3,7 +3,7 @@ use std::fs;
 use std::time::Instant;
 use std::io::{self, Write};
 
-fn merge_sort(arr: &mut [i64]) {
+fn merge_sort(arr: &mut [i32]) {
   let len = arr.len();
   if len <= 1 {
       return;
@@ -31,7 +31,7 @@ fn main() {
     let contents = fs::read_to_string(&file_path)
         .expect("Error reading the file");
 
-    let mut input: Vec<i64> = contents
+    let mut input: Vec<i32> = contents
         .split(" ")
         .map(|x| x.parse().expect("Not a number!"))
         .collect();

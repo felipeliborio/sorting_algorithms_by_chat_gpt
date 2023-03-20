@@ -3,7 +3,7 @@ use std::fs;
 use std::time::Instant;
 use std::io::{self, Write};
 
-fn radix_sort(arr: &mut [i64]) {
+fn radix_sort(arr: &mut [i32]) {
   if arr.len() <= 1 {
       return;
   }
@@ -23,7 +23,7 @@ fn radix_sort(arr: &mut [i64]) {
   }
 }
 
-fn counting_sort(arr: &mut [i64], radix: i64) {
+fn counting_sort(arr: &mut [i32], radix: i32) {
   let mut output = vec![0; arr.len()];
   let mut count = vec![0; 10];
 
@@ -51,7 +51,7 @@ fn main() {
     let contents = fs::read_to_string(&file_path)
         .expect("Error reading the file");
 
-    let mut input: Vec<i64> = contents
+    let mut input: Vec<i32> = contents
         .split(" ")
         .map(|x| x.parse().expect("Not a number!"))
         .collect();

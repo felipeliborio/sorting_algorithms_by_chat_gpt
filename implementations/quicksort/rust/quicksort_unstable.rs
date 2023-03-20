@@ -31,7 +31,7 @@ fn main() {
   let contents = fs::read_to_string(&file_path)
       .expect("Error reading the file");
 
-  let mut input: Vec<i64> = contents
+  let mut input: Vec<i32> = contents
       .split(" ")
       .map(|x| x.parse().expect("Not a number!"))
       .collect();
