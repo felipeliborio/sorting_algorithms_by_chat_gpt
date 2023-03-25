@@ -62,7 +62,7 @@ fn main() {
     
     let output: String = input.iter().map( |&entry| entry.to_string() + " ").collect();
     
-    fs::write(file_path+".merge_sort.out.rust.txt", output.trim())
+    fs::write(file_path+".radix_sort.out.rust.txt", output.trim())
         .expect("Unable to write file");
 
     println!("rust elapsed seconds {}", elapsed.as_secs() as f64 + elapsed.subsec_nanos() as f64 * 1e-9);
