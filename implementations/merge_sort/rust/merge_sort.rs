@@ -45,6 +45,14 @@ fn main() {
     fs::write(file_path+".merge_sort.out.rust.txt", output.trim())
         .expect("Unable to write file");
 
-    println!("rust elapsed seconds {}", elapsed.as_secs() as f64 + elapsed.subsec_nanos() as f64 * 1e-9);
+    let mut is_correct = true;
+    for i in 0..input.len()-1 {
+        if input[i] > input[i+1] {
+            is_correct = false;
+            break;
+        }
+    }
+
+    println!("rust elapsed seconds {} | correct: {}", elapsed.as_secs() as f64 + elapsed.subsec_nanos() as f64 * 1e-9, is_correct);
     io::stdout().flush().unwrap();
 }
