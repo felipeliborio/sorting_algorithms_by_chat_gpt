@@ -1,5 +1,6 @@
 if ! [ -f ./dist/RadixSort.js ] || test $2 = "-c"
 then
+    npm install
     npm run build
 fi
 
