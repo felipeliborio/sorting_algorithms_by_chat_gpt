@@ -64,7 +64,15 @@ fn main() {
     
     fs::write(file_path+".radix_sort.out.rust.txt", output.trim())
         .expect("Unable to write file");
+    
+    let mut is_correct = true;
+    for i in 0..input.len()-1 {
+        if input[i] > input[i+1] {
+            is_correct = false;
+            break;
+        }
+    }
 
-    println!("rust elapsed seconds {}", elapsed.as_secs() as f64 + elapsed.subsec_nanos() as f64 * 1e-9);
+    println!("rust elapsed seconds {} | correct: {}", elapsed.as_secs() as f64 + elapsed.subsec_nanos() as f64 * 1e-9, is_correct);
     io::stdout().flush().unwrap();
 }
