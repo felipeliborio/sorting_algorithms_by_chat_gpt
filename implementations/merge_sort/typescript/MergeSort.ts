@@ -47,6 +47,7 @@ const arr = input.split(" ").map((item) => parseInt(item))
 let init = Date.now()
 const sortedArr = mergeSort(arr)
 let end = Date.now()
+
 let isCorrect = true
 for (let i = 0; i < sortedArr.length - 1; ++i) {
   if (sortedArr[i] > sortedArr[i + 1]) {

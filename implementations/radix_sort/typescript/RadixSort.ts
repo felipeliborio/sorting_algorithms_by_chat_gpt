@@ -43,6 +43,14 @@ const arr = input.split(" ").map((item) => parseInt(item))
 let init = Date.now()
 const sortedArr = radixSort(arr)
 let end = Date.now()
-process.stdout.write("typescript elapsed seconds "+(end-init)/1000+"\n")
+
+let isCorrect = true
+for (let i = 0; i < sortedArr.length - 1; ++i) {
+  if (sortedArr[i] > sortedArr[i + 1]) {
+    isCorrect = false
+    break
+  }
+}
+process.stdout.write("typescript elapsed seconds "+(end-init)/1000+" | correct: "+isCorrect+"\n")
 
 fs.writeFileSync(process.argv[2]+".radix_sort.out.typescript.txt", sortedArr.join(" "))
