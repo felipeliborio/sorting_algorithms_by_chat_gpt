@@ -73,6 +73,14 @@ public class RadixSort {
         outputWriter.print(output);
         outputWriter.close();
 
-        System.out.println("java elapsed seconds "+elapsed/1000.0);
+        boolean isCorrect = true;
+        for (int i = 0; i < input.length - 1; ++i) {
+            if (input[i] > input[i + 1]) {
+                isCorrect = false;
+                break;
+            }
+        }
+
+        System.out.println("java elapsed seconds "+elapsed/1000.0+" | correct: "+isCorrect);
     }
 }
