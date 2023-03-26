@@ -71,6 +71,14 @@ const arr = input.split(" ").map((item) => parseInt(item))
 let init = Date.now()
 timsort(arr, (a, b) => a-b)
 let end = Date.now()
-process.stdout.write("typescript elapsed seconds "+(end-init)/1000+"\n")
+
+let isCorrect = true
+for (let i = 0; i < arr.length - 1; ++i) {
+  if (arr[i] > arr[i + 1]) {
+    isCorrect = false
+    break
+  }
+}
+process.stdout.write("typescript elapsed seconds "+(end-init)/1000+" | correct: "+isCorrect+"\n")
 
 fs.writeFileSync(process.argv[2]+".timsort.out.typescript.txt", arr.join(" "))
