@@ -99,14 +99,14 @@ For the java implementation was the only correct one, although it was up to 4x a
 **100000 elements**
 | Language   | Average time (seconds) | Correct     | Baseline (seconds) |
 |------------|------------------------|-------------|--------------------|
-| Java       | DNC                    | DNC         | 0.0279             |
+| Java       | DNC                    | DNF         | 0.0279             |
 | Rust       | DNC                    | DNC         | 0.001684           |
 | Typescript | 0.0252                 | false       | 0.0171             |
 
 **5000000 elements**
 | Language   | Average time (seconds) | Correct     | Baseline (seconds) |
 |------------|------------------------|-------------|--------------------|
-| Java       | DNC                    | DNC         | 0.3364             |
+| Java       | DNC                    | DNF         | 0.3364             |
 | Rust       | DNC                    | DNC         | 0.0991             |
 | Typescript | 0.7791                 | false       | 1.1126             |
 
