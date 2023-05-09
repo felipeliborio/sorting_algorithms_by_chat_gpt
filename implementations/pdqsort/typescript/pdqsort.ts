@@ -34,23 +34,29 @@ export function quickSort<T>(arr: T[]): T[] {
   return arr;
 }
 
-import fs from "fs"
+// import fs from "fs"
 
-const input = fs.readFileSync(process.argv[2], "utf8")
-const arr = input.split(" ").map((item) => parseInt(item))
+// const input = fs.readFileSync(process.argv[2], "utf8")
+// const arr = input.split(" ").map((item) => parseInt(item))
 
-let init = Date.now()
-const sortedArr = quickSort(arr)
-let end = Date.now()
+const arr: number[] = [];
 
-let isCorrect = true
-for(let i=0; i<sortedArr.length-1; ++i) {
-  if(sortedArr[i] > sortedArr[i+1]) {
-    isCorrect = false
-    break
-  }
+for (let i = 0; i < 5000000; ++i) {
+  arr.push(~~(2000000000 * Math.random()));
 }
 
-process.stdout.write("typescript elapsed seconds "+(end-init)/1000+" | correct: "+isCorrect+"\n")
+// let init = Date.now()
+const sortedArr = quickSort(arr)
+// let end = Date.now()
 
-fs.writeFileSync(process.argv[2]+".pdqsort.out.typescript.txt", sortedArr.join(" "))
+// let isCorrect = true
+// for(let i=0; i<sortedArr.length-1; ++i) {
+//   if(sortedArr[i] > sortedArr[i+1]) {
+//     isCorrect = false
+//     break
+//   }
+// }
+
+// process.stdout.write("typescript elapsed seconds "+(end-init)/1000+" | correct: "+isCorrect+"\n")
+
+// fs.writeFileSync(process.argv[2]+".pdqsort.out.typescript.txt", sortedArr.join(" "))

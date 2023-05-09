@@ -47,6 +47,15 @@ fn counting_sort(arr: &mut [i32], radix: i32) {
 }
 
 fn main() {
+    let count = 5000000;
+    let mut rng = rand::thread_rng();
+    let mut integers: Vec<i32> = Vec::new();
+    for _i in 0..count {
+        integers.push(rng.gen_range(0..2000000000));
+    }
+
+    merge_sort(&mut integers);
+
     let file_path = env::args().nth(1).unwrap();
     let contents = fs::read_to_string(&file_path)
         .expect("Error reading the file");

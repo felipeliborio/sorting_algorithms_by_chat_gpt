@@ -63,22 +63,28 @@ function timsort<T>(array: T[], compare: (a: T, b: T) => number) {
   }
 }
 
-import fs from "fs"
+const arr: number[] = [];
 
-const input = fs.readFileSync(process.argv[2], "utf8")
-const arr = input.split(" ").map((item) => parseInt(item))
-
-let init = Date.now()
-timsort(arr, (a, b) => a-b)
-let end = Date.now()
-
-let isCorrect = true
-for (let i = 0; i < arr.length - 1; ++i) {
-  if (arr[i] > arr[i + 1]) {
-    isCorrect = false
-    break
-  }
+for (let i = 0; i < 5000000; ++i) {
+  arr.push(~~(2000000000 * Math.random()));
 }
-process.stdout.write("typescript elapsed seconds "+(end-init)/1000+" | correct: "+isCorrect+"\n")
 
-fs.writeFileSync(process.argv[2]+".timsort.out.typescript.txt", arr.join(" "))
+// import fs from "fs"
+
+// const input = fs.readFileSync(process.argv[2], "utf8")
+// const arr = input.split(" ").map((item) => parseInt(item))
+
+// let init = Date.now()
+timsort(arr, (a, b) => a-b)
+// let end = Date.now()
+
+// let isCorrect = true
+// for (let i = 0; i < arr.length - 1; ++i) {
+//   if (arr[i] > arr[i + 1]) {
+//     isCorrect = false
+//     break
+//   }
+// }
+// process.stdout.write("typescript elapsed seconds "+(end-init)/1000+" | correct: "+isCorrect+"\n")
+
+// fs.writeFileSync(process.argv[2]+".timsort.out.typescript.txt", arr.join(" "))

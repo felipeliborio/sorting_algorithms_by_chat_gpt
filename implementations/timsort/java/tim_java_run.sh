@@ -8,4 +8,5 @@ then
     rm $1.timsort.out.java.txt
 fi
 
-time java Timsort $1 >> $1.timsort.time.txt
+# time java Timsort $1 >> $1.timsort.time.txt
+\time -v -a -f "Program: %C\nTotal time: %E\nUser Mode (s) %U\nKernel Mode (s) %S\nCPU: %P" java Timsort $1

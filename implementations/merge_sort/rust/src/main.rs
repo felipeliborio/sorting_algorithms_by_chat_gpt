@@ -1,7 +1,3 @@
-use std::env;
-use std::fs;
-use std::time::Instant;
-use std::io::{self, Write};
 use rand::Rng;
 
 
@@ -30,7 +26,7 @@ fn merge_sort(arr: &mut [i32]) {
 
 fn main() {
 
-    let count = 100000;
+    let count = 5000000;
     let mut rng = rand::thread_rng();
     let mut integers: Vec<i32> = Vec::new();
     for _i in 0..count {

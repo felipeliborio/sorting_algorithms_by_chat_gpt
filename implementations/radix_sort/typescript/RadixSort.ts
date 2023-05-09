@@ -35,22 +35,28 @@ function countingSort(arr: number[], exp: number) {
   }
 }
 
-import fs from "fs"
+const arr: number[] = [];
 
-const input = fs.readFileSync(process.argv[2], "utf8")
-const arr = input.split(" ").map((item) => parseInt(item))
-
-let init = Date.now()
-const sortedArr = radixSort(arr)
-let end = Date.now()
-
-let isCorrect = true
-for (let i = 0; i < sortedArr.length - 1; ++i) {
-  if (sortedArr[i] > sortedArr[i + 1]) {
-    isCorrect = false
-    break
-  }
+for (let i = 0; i < 5000000; ++i) {
+  arr.push(~~(2000000000 * Math.random()));
 }
-process.stdout.write("typescript elapsed seconds "+(end-init)/1000+" | correct: "+isCorrect+"\n")
 
-fs.writeFileSync(process.argv[2]+".radix_sort.out.typescript.txt", sortedArr.join(" "))
+// import fs from "fs"
+
+// const input = fs.readFileSync(process.argv[2], "utf8")
+// const arr = input.split(" ").map((item) => parseInt(item))
+
+// let init = Date.now()
+const sortedArr = radixSort(arr)
+// let end = Date.now()
+
+// let isCorrect = true
+// for (let i = 0; i < sortedArr.length - 1; ++i) {
+//   if (sortedArr[i] > sortedArr[i + 1]) {
+//     isCorrect = false
+//     break
+//   }
+// }
+// process.stdout.write("typescript elapsed seconds "+(end-init)/1000+" | correct: "+isCorrect+"\n")
+
+// fs.writeFileSync(process.argv[2]+".radix_sort.out.typescript.txt", sortedArr.join(" "))
