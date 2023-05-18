@@ -48,96 +48,96 @@ Each implementation was run 10 times, average time and correctness were evaluate
 
 ### Mergesort
 **100000 elements**
-| Language   | Average time (seconds) | Correct     | Baseline (seconds) |
-|------------|------------------------|-------------|--------------------|
-| Java       | 0.011                  | true        | 0.0279             |
-| Rust       | 0.00668                | true        | 0.003405           |
-| Typescript | 0.0221                 | true        | 0.0171             |
+| Language   | Average time (seconds) | Correct     | Baseline (seconds) | Memory Usage KB (instance load | total) |
+|------------|------------------------|-------------|--------------------|-----------------------------------------|
+| Java       | 0.011                  | true        | 0.0279             | 42418.6   | 52861.8                     |
+| Rust       | 0.00668                | true        | 0.003405           | 21659.2   | 21565.6                     |
+| Typescript | 0.0221                 | true        | 0.0171             | 52116.6   | 75080                       |
 
 **5000000 elements**
-| Language   | Average time (seconds) | Correct     | Baseline (seconds) |
-|------------|------------------------|-------------|--------------------|
-| Java       | 0.5137                 | true        | 0.3364             |
-| Rust       | 0.441                  | true        | 0.2205             |
-| Typescript | 1.3531                 | true        | 1.1126             |
+| Language   | Average time (seconds) | Correct     | Baseline (seconds) | Memory Usage KB (instance load | total) |
+|------------|------------------------|-------------|--------------------|-----------------------------------------|
+| Java       | 0.5137                 | true        | 0.3364             | 63762.4     | 438425.2                  |
+| Rust       | 0.441                  | true        | 0.2205             | 22580       | 51712.4                   |
+| Typescript | 1.3531                 | true        | 1.1126             | 165489.2    | 664780.4                  |
 
 For Mergesort, all implementations were able to correctly sort the test instances. The Rust implementation was the fastest, followed by the Java implementation and the Typescript implementation which was over twice as slow than its counterparts.
 
 ### Quicksort Stable
 **100000 elements**
-| Language   | Average time (seconds) | Correct     | Baseline (seconds) |
-|------------|------------------------|-------------|--------------------|
-| Java       | 0.0508                 | true        | 0.0279             |
-| Rust       | 0.0047606              | false       | 0.003405           |
-| Typescript | DNC                    | DNC         | 0.0171             |
+| Language   | Average time (seconds) | Correct     | Baseline (seconds) | Memory Usage KB (instance load | total) |
+|------------|------------------------|-------------|--------------------|-----------------------------------------|
+| Java       | 0.0508                 | true        | 0.0279             | 44670.8   | 72605                       |
+| Rust       | 0.0047606              | false       | 0.003405           | 21516.4   | 21566.8                     |
+| Typescript | DNC                    | DNC         | 0.0171             | DNC       | DNC                         |
 
 **5000000 elements**
-| Language   | Average time (seconds) | Correct     | Baseline (seconds) |
-|------------|------------------------|-------------|--------------------|
-| Java       | 1.2877                 | true        | 0.3364             |
-| Rust       | 0.24678                | false       | 0.2205             |
-| Typescript | DNC                    | DNC         | 1.1126             |
+| Language   | Average time (seconds) | Correct     | Baseline (seconds) | Memory Usage KB (instance load | total) |
+|------------|------------------------|-------------|--------------------|-----------------------------------------|
+| Java       | 1.2877                 | true        | 0.3364             | 158341.2  | 947373.4                    |
+| Rust       | 0.24678                | false       | 0.2205             | 22152     | 67403.6                     |
+| Typescript | DNC                    | DNC         | 1.1126             | DNC       | DNC                         |
 
 For the java implementation was the only correct one, although it was up to 4x as slow than Java's baseline. The Rust implementation did not sort the instances correctly, the the elements did keep their original order in this implementation,  and the Typescript implementation did not compile.
 
 ### Quicksort Unstable
 **100000 elements**
-| Language   | Average time (seconds) | Correct     | Baseline (seconds) |
-|------------|------------------------|-------------|--------------------|
-| Java       | 0.0265                 | true        | 0.0279             |
-| Rust       | 0.0040204              | true        | 0.001684           |
-| Typescript | DNC                    | DNC         | 0.0171             |
+| Language   | Average time (seconds) | Correct     | Baseline (seconds) | Memory Usage KB (instance load | total) |
+|------------|------------------------|-------------|--------------------|-----------------------------------------|
+| Java       | 0.0265                 | true        | 0.0279             | 44253.4   | 49026.8                     |
+| Rust       | 0.0040204              | true        | 0.001684           | 21644     | 21549.6                     |
+| Typescript | DNC                    | DNC         | 0.0171             | DNC       | DNC                         |
 
 **5000000 elements**
-| Language   | Average time (seconds) | Correct     | Baseline (seconds) |
-|------------|------------------------|-------------|--------------------|
-| Java       | 1.1903                 | true        | 0.3364             |
-| Rust       | 0.2812                 | true        | 0.0991             |
-| Typescript | DNC                    | DNC         | 1.1126             |
+| Language   | Average time (seconds) | Correct     | Baseline (seconds) | Memory Usage KB (instance load | total) |
+|------------|------------------------|-------------|--------------------|-----------------------------------------|
+| Java       | 1.1903                 | true        | 0.3364             | 159832.4  | 161227                      |
+| Rust       | 0.2812                 | true        | 0.0991             | 22871.2   | 22486.4                     |
+| Typescript | DNC                    | DNC         | 1.1126             | DNC       | DNC                         |
 
 ### Pattern defeating quicksort
 **100000 elements**
-| Language   | Average time (seconds) | Correct     | Baseline (seconds) |
-|------------|------------------------|-------------|--------------------|
-| Java       | DNC                    | DNF         | 0.0279             |
-| Rust       | DNC                    | DNC         | 0.001684           |
-| Typescript | 0.0252                 | false       | 0.0171             |
+| Language   | Average time (seconds) | Correct     | Baseline (seconds) | Memory Usage KB (instance load | total) |
+|------------|------------------------|-------------|--------------------|-----------------------------------------|
+| Java       | DNC                    | DNC         | 0.0279             | DNC       | DNC                         |
+| Rust       | DNC                    | DNC         | 0.001684           | DNC       | DNC                         |
+| Typescript | 0.0252                 | false       | 0.0171             | 50414.4   | 61930.8                     |
 
 **5000000 elements**
-| Language   | Average time (seconds) | Correct     | Baseline (seconds) |
-|------------|------------------------|-------------|--------------------|
-| Java       | DNC                    | DNF         | 0.3364             |
-| Rust       | DNC                    | DNC         | 0.0991             |
-| Typescript | 0.7791                 | false       | 1.1126             |
+| Language   | Average time (seconds) | Correct     | Baseline (seconds) | Memory Usage KB (instance load | total) |
+|------------|------------------------|-------------|--------------------|-----------------------------------------|
+| Java       | DNC                    | DNC         | 0.3364             | DNC       | DNC                         |
+| Rust       | DNC                    | DNC         | 0.0991             | DNC       | DNC                         |
+| Typescript | 0.7791                 | false       | 1.1126             | 165199.6  | 449360.8                    |
 
 For the pattern defeating quicksort, none of the implementations was able to correctly sort the test instances and only the Typescript implementation was able to run.
 
 ### Radixsort
 **100000 elements**
-| Language   | Average time (seconds) | Correct     | Baseline (seconds) |
-|------------|------------------------|-------------|--------------------|
-| Java       | 0.0129                 | true        | 0.0279             |
-| Rust       | 0.0044257              | true        | 0.001684           |
-| Typescript | 0.2514                 | true        | 0.0171             |
+| Language   | Average time (seconds) | Correct     | Baseline (seconds) | Memory Usage KB (instance load | total) |
+|------------|------------------------|-------------|--------------------|-----------------------------------------|
+| Java       | 0.0129                 | true        | 0.0279             | 43055     | 43116.4                     |
+| Rust       | 0.0044257              | true        | 0.001684           | 21581.6   | 21582.4                     |
+| Typescript | 0.2514                 | true        | 0.0171             | 50193.6   | 55108.8                     |
 
 **5000000 elements**
-| Language   | Average time (seconds) | Correct     | Baseline (seconds) |
-|------------|------------------------|-------------|--------------------|
-| Java       | 0.2691                 | true        | 0.3364             |
-| Rust       | 0.228674               | true        | 0.0991             |
-| Typescript | DNF                    | DNF         | 1.1126             |
+| Language   | Average time (seconds) | Correct     | Baseline (seconds) | Memory Usage KB (instance load | total) |
+|------------|------------------------|-------------|--------------------|-----------------------------------------|
+| Java       | 0.2691                 | true        | 0.3364             | 63423.6   | 84874.6                     |
+| Rust       | 0.228674               | true        | 0.0991             | 22303.2   | 42117.6                     |
+| Typescript | DNF                    | DNF         | 1.1126             | 165356.4  | 165523.6                    |
 
 ### Timsort
 **100000 elements**
-| Language   | Average time (seconds) | Correct     | Baseline (seconds) |
-|------------|------------------------|-------------|--------------------|
-| Java       | DNF                    | DNF         | 0.0279             |
-| Rust       | DNC                    | DNC         | 0.003405           |
-| Typescript | 0.0154                 | true        | 0.0171             |
+| Language   | Average time (seconds) | Correct     | Baseline (seconds) | Memory Usage KB (instance load | total) |
+|------------|------------------------|-------------|--------------------|-----------------------------------------|
+| Java       | DNF                    | DNF         | 0.0279             | 42710     | 48694.2                     |
+| Rust       | DNC                    | DNC         | 0.003405           | DNC       | DNC                         |
+| Typescript | 0.0154                 | true        | 0.0171             | 51033.2   | 56278                       |
 
 **5000000 elements**
-| Language   | Average time (seconds) | Correct     | Baseline (seconds) |
-|------------|------------------------|-------------|--------------------|
-| Java       | DNF                    | DNF         | 0.3364             |
-| Rust       | DNC                    | DNC         | 0.2205             |
-| Typescript | 0.585                  | true        | 1.1126             |
+| Language   | Average time (seconds) | Correct     | Baseline (seconds) | Memory Usage KB (instance load | total) |
+|------------|------------------------|-------------|--------------------|-----------------------------------------|
+| Java       | DNF                    | DNF         | 0.3364             | 63388.6   | 168112.8                    |
+| Rust       | DNC                    | DNC         | 0.2205             | DNC       | DNC                         |
+| Typescript | 0.585                  | true        | 1.1126             | 165612.8  | 253324.8                    |
